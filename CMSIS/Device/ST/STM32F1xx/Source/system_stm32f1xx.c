@@ -8,11 +8,12 @@
 #define HSI_VALUE 8000000U
 #endif
 
-uint32_t SystemCoreClock = 72000000U;
+uint32_t SystemCoreClock = HSI_VALUE;
 
 const uint8_t AHBPrescTable[16U] = {0,0,0,0,0,0,0,0,1,2,3,4,6,7,8,9};
 const uint8_t APBPrescTable[8U]  = {0,0,0,0,1,2,3,4};
 
+#if 0
 static void SetSysClockTo72(void)
 {
     RCC->CR |= RCC_CR_HSEON;
@@ -37,6 +38,7 @@ static void SetSysClockTo72(void)
     RCC->CFGR |= RCC_CFGR_SW_PLL;
     while ((RCC->CFGR & RCC_CFGR_SWS) != RCC_CFGR_SWS_PLL) {}
 }
+#endif
 
 void SystemInit(void)
 {
@@ -46,9 +48,10 @@ void SystemInit(void)
     RCC->CR &= ~RCC_CR_HSEBYP;
     RCC->CIR = 0U;
 
-    SetSysClockTo72();
+    /* Keep reset clock configuration: SYSCLK = HSI = 8 MHz. */
+    /* SetSysClockTo72(); */
 
-    SystemCoreClock = 72000000U;
+    SystemCoreClock = HSI_VALUE;
 }
 
 void SystemCoreClockUpdate(void)

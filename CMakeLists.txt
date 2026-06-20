@@ -36,7 +36,6 @@ include_directories(
 
 add_definitions(
     -DSTM32F103xB
-    -DHSE_VALUE=16000000U
 )
 
 add_executable(${PROJECT_NAME}.elf ${SOURCES})
