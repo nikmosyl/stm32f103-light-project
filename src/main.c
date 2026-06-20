@@ -23,6 +23,6 @@ int main(void)
     while (1)
     {
         GPIOC->ODR ^= LED_MASK;
-        delay(800000U);
+        delay(1000000U);
     }
 }

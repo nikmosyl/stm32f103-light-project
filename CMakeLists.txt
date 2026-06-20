@@ -9,7 +9,7 @@ set(CMAKE_ASM_COMPILER arm-none-eabi-gcc)
 set(CMAKE_OBJCOPY      arm-none-eabi-objcopy)
 set(CMAKE_SIZE         arm-none-eabi-size)
 
-project(panaled C ASM)
+project(stm32f103-light-project C ASM)
 
 set(CPU_FLAGS "-mcpu=cortex-m3 -mthumb")
 set(C_WARNINGS "-Wall -Wextra -Werror")

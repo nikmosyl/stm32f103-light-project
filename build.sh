@@ -2,12 +2,16 @@
 set -e
 
 rm -rf build
-
+mkdir build
 cd build
+
 echo "Dir created"
 
-make -j$(nproc)
+cmake ..
+echo "Configured"
+
+make -j$(sysctl -n hw.ncpu)
 echo "Compiled"
 
-st-flash write panaled.bin 0x08000000
+st-flash write stm32f103-light-project.bin 0x08000000
 echo "Flash Done"
